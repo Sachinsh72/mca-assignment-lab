@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Satisfaction Survey</title>
+    <script>
+        function validateForm() {
+            var name = document.forms["surveyForm"]["patientName"].value;
+            var fileNumber = document.forms["surveyForm"]["fileNumber"].value;
+            var unit = document.forms["surveyForm"]["unit"].value;
+            var treatmentSatisfaction = document.forms["surveyForm"]["treatmentSatisfaction"].value;
+            var facilitiesSatisfaction = document.forms["surveyForm"]["facilitiesSatisfaction"].value;
+
+            if (name === "" || fileNumber === "" || unit === "" || treatmentSatisfaction === "" || facilitiesSatisfaction === "") {
+                alert("All fields must be filled out");
+                return false;
+            }
+
+            // Additional validation logic can be added if needed
+
+            return true;
+        }
+
+        function resetForm() {
+            document.getElementById("surveyForm").reset();
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Patient Satisfaction Survey</h2>
+
+    <form name="surveyForm" onsubmit="return validateForm()">
+        <label for="patientName">Patient's Name:</label>
+        <input type="text" id="patientName" name="patientName">
+
+        <br>
+
+        <label for="fileNumber">Patient's File Number:</label>
+        <input type="text" id="fileNumber" name="fileNumber">
+
+        <br>
+
+        <label for="unit">Hospital Unit:</label>
+        <select id="unit" name="unit">
+            <option value="" disabled selected>Select Unit</option>
+            <option value="surgery">Surgery</option>
+            <option value="medicine">Medicine</option>
+            <!-- Add more options as needed -->
+        </select>
+
+        <br>
+
+        <label>Are you satisfied with overall treatment:</label>
+        <br>
+        <input type="radio" name="treatmentSatisfaction" value="verySatisfied"> Very Satisfied
+        <input type="radio" name="treatmentSatisfaction" value="satisfied"> Satisfied
+        <input type="radio" name="treatmentSatisfaction" value="notSatisfied"> Not Satisfied
+
+        <br>
+
+        <label>Are you satisfied with medical facilities in the hospital:</label>
+        <br>
+        <input type="radio" name="facilitiesSatisfaction" value="verySatisfied"> Very Satisfied
+        <input type="radio" name="facilitiesSatisfaction" value="satisfied"> Satisfied
+        <input type="radio" name="facilitiesSatisfaction" value="notSatisfied"> Not Satisfied
+
+        <br>
+
+        <label for="comments">Overall Comments:</label>
+        <textarea id="comments" name="comments" rows="4" cols="50"></textarea>
+
+        <br>
+
+        <button type="submit">Submit</button>
+        <button type="button" onclick="resetForm()">Reset</button>
+    </form>
+
+</body>
+</html>

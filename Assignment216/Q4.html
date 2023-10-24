@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies Example</title>
+    <script>
+        function setCookie(cookieName, cookieValue) {
+            document.cookie = cookieName + "=" + cookieValue + "; path=/";
+        }
+
+        function getCookie(cookieName) {
+            var name = cookieName + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var cookieArray = decodedCookie.split(';');
+            for (var i = 0; i < cookieArray.length; i++) {
+                var cookie = cookieArray[i].trim();
+                if (cookie.indexOf(name) == 0) {
+                    return cookie.substring(name.length, cookie.length);
+                }
+            }
+            return "";
+        }
+
+        function deleteCookie(cookieName) {
+            document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        }
+
+        function displayAllCookies() {
+            var decodedCookie = decodeURIComponent(document.cookie);
+            alert("All Cookies:\n" + decodedCookie);
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Cookie Operations</h2>
+
+    <button onclick="setCookie('cookie1', 'value1')">Set Cookie1</button>
+    <button onclick="setCookie('cookie2', 'value2')">Set Cookie2</button>
+
+    <br><br>
+
+    <button onclick="alert('Cookie1 Value: ' + getCookie('cookie1'))">Get Cookie1</button>
+    <button onclick="alert('Cookie2 Value: ' + getCookie('cookie2'))">Get Cookie2</button>
+
+    <br><br>
+
+    <button onclick="deleteCookie('cookie1')">Delete Cookie1</button>
+    <button onclick="deleteCookie('cookie2')">Delete Cookie2</button>
+
+    <br><br>
+
+    <button onclick="displayAllCookies()">Display All Cookies</button>
+
+</body>
+</html>
